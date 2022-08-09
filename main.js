@@ -17,10 +17,11 @@ btns.forEach((btn) => {
 
   // Set event listener to btn: will use the corresponding updateCount for 
   // decrementing, resetting, or increaseing count, and updating the value 
-  // content for display.
+  // content for display. Then updates the color of value displayed.
   btn.addEventListener('click', () => {
     updateCount(n);
     value.textContent = count;
+    updateColor();
   });
 });
 
@@ -31,5 +32,17 @@ const updateCount = (n) => {
     count = 0;
   } else {
     count += n;
+  }
+}
+
+// Updates the color of value (which displays current count) given by current 
+// count: black if 0, green if positive, and red if negative.
+const updateColor = () => {
+  if (count === 0 ) {
+    value.style.color = "black";
+  } else if (count > 0) {
+    value.style.color = "green";
+  } else {
+    value.style.color = "red";
   }
 }
